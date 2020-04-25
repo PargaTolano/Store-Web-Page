@@ -2,6 +2,8 @@ package Model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="ProductoComprado")
 public class ProductoComprado {
@@ -14,6 +16,7 @@ public class ProductoComprado {
 	
 	private float costo;
 	
+	@JsonManagedReference
 	@ManyToOne
 	Producto producto;
 	

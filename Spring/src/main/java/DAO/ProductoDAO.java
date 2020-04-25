@@ -12,5 +12,4 @@ public interface ProductoDAO {
 	
 	public List<Producto>getAll();
 	public Producto getById	(Producto p);
-	public Producto getById (int     id);
 }

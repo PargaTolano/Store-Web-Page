@@ -2,6 +2,8 @@ package Model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="video")
 public class Video {
@@ -11,6 +13,7 @@ public class Video {
 	
 	private byte[] bytes;
 	
+	@JsonManagedReference
 	@ManyToOne
 	Producto productos;
 

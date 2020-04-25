@@ -41,9 +41,4 @@ public class Producto_Service_Imp implements Producto_Service {
 		return productodao.getById(p);
 	}
 
-	@Override
-	public Producto getById(int id) {
-		return productodao.getById(id);
-	}
-
 }

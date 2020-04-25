@@ -14,7 +14,7 @@ export class ProductoService {
 
   getById(id:number):Observable<Producto>
   {
-    return this.http.post<Producto>(`${this.baseUrl}id/${id}`, null);
+    return this.http.get<Producto>(`${this.baseUrl}id/${id}`);
   }
 
   getAll():Observable<any>

@@ -24,14 +24,12 @@ public class ProductoController {
 		return productoService.getAll();
 	}
 	
-	@PostMapping("productos-id/{id}")
+	@GetMapping("productos-id/{id}")
 	public Producto getById(@PathVariable(name="id") int id)
 	{
-		System.out.println("Servicio Producto id invocado; id = "+ Integer.toString(id));
-		Producto p = productoService.getById(id);
-		System.out.println(p.getNombre().toString());
-		p.getImagenes().forEach(System.out::println);
-		return p;
+		Producto p = new Producto();
+		p.setId(id);
+		return productoService.getById(p);
 	}
 	
 	@GetMapping("productos-json")

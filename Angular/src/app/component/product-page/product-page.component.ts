@@ -41,17 +41,6 @@ export class ProductPageComponent implements OnInit{
     this.service.getById(Number(this.id)).subscribe(data=>{
 
         this.product = data;
-
-        this.mediaBoxes = [this.product.imagenes]/*.concat([this.product.videos])*/;
-
-        this.imgCount = this.mediaBoxes.length;
-
-        this.mediaWidth = 100 / this.imgCount;
-
-        $("div.media img").css({
-          "width":(100/this.mediaWidth)+"%"
-        });
-
     },
     error=>{
 
@@ -59,7 +48,7 @@ export class ProductPageComponent implements OnInit{
 
     });
 
-    this.mediaBoxes = this.mockMediaBoxes;
+    this.mediaBoxes = this.product.imagenes;
 
     this.imgCount = this.mediaBoxes.length;
 

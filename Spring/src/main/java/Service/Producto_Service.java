@@ -12,5 +12,4 @@ public interface Producto_Service {
 	
 	public List<Producto> getAll();
 	public Producto getById				(Producto p);
-	public Producto getById				(int     id);
 }

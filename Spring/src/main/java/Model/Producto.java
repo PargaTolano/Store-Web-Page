@@ -2,6 +2,8 @@ package Model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.util.Collection;
 import java.util.List;
@@ -24,19 +26,26 @@ public class Producto {
 	
 	private int descuento;
 	
+	@JsonBackReference
 	@OneToMany
 	List<Imagen> imagenes;
 	
+	@JsonBackReference
 	@OneToMany
 	List<Video> videos;
 	
+	@JsonBackReference
 	@OneToMany
 	List<ProductoComprado> productosComprados;
 
 	public int getId() {
 		return id;
 	}
-
+	
+	public void setId(int id) {
+		this.id = id;
+	}
+	
 	public String getNombre() {
 		return nombre;
 	}

@@ -2,6 +2,8 @@ package Model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 @Entity
 @Table(name="imagen")
 public class Imagen {
@@ -12,6 +14,7 @@ public class Imagen {
 	
 	private byte[] bytes;
 	
+	@JsonManagedReference
 	@ManyToOne
 	Producto productos;
 

@@ -69,16 +69,11 @@ public class ProductoDAO_Imp implements ProductoDAO {
 		ProcedureCall procedureCall=currentSession.createStoredProcedureCall("producto_by_id",Producto.class);
 		procedureCall.registerParameter(1, int.class, ParameterMode.IN).bindValue(p.getId());
 		List<Producto> list=procedureCall.getResultList();
-		return list.get(0);
-	}
-
-	@Override
-	public Producto getById(int id) {
-		Session currentSession = sessionFactory.getCurrentSession();
-		ProcedureCall procedureCall=currentSession.createStoredProcedureCall("producto_by_id",Producto.class);
-		procedureCall.registerParameter(1, int.class, ParameterMode.IN).bindValue(id);
-		List<Producto> list=procedureCall.getResultList();
-		return list.get(0);
+		Producto r = list.get(0);
+		r.getImagenes().size();
+		r.getVideos().size();
+		r.getProductosComprados().size();
+		return r;
 	}
 	
 	
