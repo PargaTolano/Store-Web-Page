@@ -1,0 +1,178 @@
+$main: #BB86FC;
+$bk: #121212;
+$far: #222;
+$middle: #333;
+$near: #444;
+$error: #CF6679;
+$main-text-color: #A9A9B0;
+$highlight-color: #D9DDDC;
+#shopping-cart-wrapper {
+    margin: 40px calc(100vw / 64);
+    background: $middle;
+    border: $middle solid 5px;
+    border-radius: 10px;
+    min-width: 550px;
+}
+
+.product-container {
+    background-color: $far;
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.product-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.product-container ul li {
+    margin: 40px auto;
+    background-color: $middle;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.img-container {
+    float: left;
+}
+
+.product {
+    width: 550px;
+    height: 200px;
+}
+
+p {
+    margin: 0;
+}
+
+.product-info {
+    float: left;
+    margin-left: 20px;
+}
+
+.product-quan {
+    display: inline-block;
+}
+
+.product-quan #cantidad {
+    display: block
+}
+
+.product-precio-unidad {
+    display: inline-block;
+    margin-left: 30px;
+}
+
+.product-desc p {
+    width: 300px;
+}
+
+.icons {
+    color: $main
+}
+
+.icons:hover {
+    cursor: pointer;
+}
+
+.icons .left {
+    position: relative;
+    float: left;
+}
+
+.icons .right {
+    position: relative;
+    float: right;
+}
+
+.product-prices {
+    display: block;
+}
+
+input.cantidad {
+    width: 50px;
+    text-align: center;
+}
+
+.product-prices {
+    padding-top: 20px;
+}
+
+.product-precio-unidad h6 {
+    margin: 0;
+}
+
+.subtotal {
+    margin-left: 40px;
+    float: right;
+}
+
+.subtotal h5 {
+    margin: 0
+}
+
+.remove-container h5 {
+    color: $error;
+    float: right;
+}
+
+.check-out-container {
+    padding: 10px;
+    text-align: right;
+}
+
+@media screen and (max-width: 600px) {
+    .check-out-container {
+        padding: 10px;
+        text-align: center;
+    }
+    #shopping-cart-wrapper {
+        border: none;
+        border-radius: 0;
+        padding: 10px 0;
+        margin: 40px 0;
+    }
+    #shopping-cart-wrapper h3 {
+        padding-left: 10px;
+    }
+    .product-container {
+        border-radius: 0;
+        padding: 0;
+    }
+    .product-container ul li {
+        margin: 0;
+        border-top: $near solid 1px;
+        border-bottom: $near solid 1px;
+        border-radius: 0;
+        width: 100%;
+        background: $far;
+    }
+    .img-container {
+        margin-left: 3px;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .product-precio-unidad {
+        margin-left: 60px;
+    }
+    .product {
+        width: 700px;
+    }
+    .subtotal {
+        margin-left: 150px;
+    }
+}
+
+@media screen and (min-width: 1200px) {
+    .product-precio-unidad {
+        margin-left: 60px;
+    }
+    .product {
+        width: 800px;
+    }
+    .subtotal {
+        margin-left: 250px;
+    }
+}

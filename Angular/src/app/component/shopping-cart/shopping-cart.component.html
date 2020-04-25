@@ -1,0 +1,64 @@
+<div id="shopping-cart-wrapper">
+
+    <h3><i class="fa fa-shopping-cart" style="margin-right:30px;"></i> Shopping Cart </h3>
+
+    <div class="product-container">
+
+        <ul>
+
+            <li class="product" *ngFor="let item of carrito.productosComprados; let i= index ">
+
+                <div class="img-container ">
+                    <img src="https://via.placeholder.com/180 ">
+                </div>
+
+                <div class="product-info ">
+
+                    <div class="remove-container">
+                        <h5 (click)="remove(i)"><i class="fa fa-close"></i></h5>
+                    </div>
+
+                    <div class="product-desc ">
+                        <h4>
+                            {{item.producto.nombre}}
+                        </h4>
+                        <p>
+                            {{item.producto.descripcion}}
+                        </p>
+                    </div>
+
+                    <div class="product-prices ">
+
+                        <div class="product-quan ">
+
+                            <input type="text " class="cantidad" [(ngModel)]="item.unidades" (keyup)="key(i,item.unidades,$event)" (focusout)="focusOut(i,item.unidades)">
+                            <div class="icons ">
+
+                                <p class="left" (click)="substract(i)"><i class="fa fa-minus "></i></p>
+                                <p class="right" (click)="add(i)"><i class="fa fa-plus "></i></p>
+                            </div>
+                        </div>
+
+                        <div class="product-precio-unidad">
+                            <h6>Precio por unidad: {{item.producto.precio}}</h6>
+                        </div>
+
+                        <div class="subtotal">
+                            <h5>$ {{item.unidades * item.producto.precio}}</h5>
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </li>
+
+        </ul>
+
+    </div>
+
+    <div class="check-out-container">
+        <button class="btn btn-warning">Proceder a pago!</button>
+    </div>
+
+</div>

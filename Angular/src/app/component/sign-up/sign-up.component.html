@@ -1,0 +1,87 @@
+<div id="signup">
+    <h3> Dar de alta usuario</h3>
+    <div class="center-x">
+        <div [hidden]="submitted" style="width: 400px;" class="center-x">
+            <form [formGroup]="saveForm" #saveusuario (ngSubmit)="SaveUsuario(saveusuario)">
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" formControlName="usuario_nombre" data-toggle="tooltip" data-placement="right" title="Introduce Nombre">
+                    <div class="alert alert-danger error" *ngIf="(UsuarioNombre.touched) && (UsuarioNombre.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="UsuarioNombre.errors.required">Campo Requerido</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Apellido</label>
+                    <input type="text" class="form-control" formControlName="usuario_apellido" data-toggle="tooltip" data-placement="right" title="Introduce Apellido">
+                    <div class="alert alert-danger error" *ngIf="(UsuarioApellido.touched) && (UsuarioApellido.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="UsuarioApellido.errors.required">Campo Requerido           </span>
+                        <span *ngIf="UsuarioApellido.errors.email"> Formato de correo no valido </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Correo</label>
+                    <input type="text" class="form-control" formControlName="usuario_correo" data-toggle="tooltip" data-placement="right" title="Introduce Correo">
+                    <div class="alert alert-danger error" *ngIf="(UsuarioEmail.touched) && (UsuarioEmail.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="UsuarioEmail.errors.required">Campo Requerido</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Nombre De Usuario</label>
+                    <input type="text" class="form-control" formControlName="usuario_nombre_usuario" data-toggle="tooltip" data-placement="right" title="Introduce Nombre de Usuario">
+                    <div class="alert alert-danger error" *ngIf="(UsuarioNombreUsuario.touched) && (UsuarioNombreUsuario.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="UsuarioNombreUsuario.errors.required">Campo Requerido</span>
+                        <span *ngIf="UsuarioNombreUsuario.errors.minlength">Campo muy corto</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Contraseña</label>
+                    <input type="text" class="form-control" formControlName="usuario_contrasena" data-toggle="tooltip" data-placement="right" title="Introduce tu Contrasena">
+                    <div class="alert alert-danger error" *ngIf="(UsuarioContrasena.touched) && (UsuarioContrasena.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="UsuarioContrasena.errors.required">Campo Requerido</span>
+                        <span *ngIf="UsuarioContrasena.errors.minlength">Campo muy corto</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Telefono</label>
+                    <input type="text" class="form-control" formControlName="usuario_telefono" data-toggle="tooltip" data-placement="right" title="Introduce tu Telefono">
+                    <div class="alert alert-danger error" *ngIf="(UsuarioTelefono.touched) && (UsuarioTelefono.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="UsuarioTelefono.errors.required">Campo Requerido</span>
+                        <span *ngIf="UsuarioTelefono.errors.minlength">Campo no es numero de telefono valido</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Direccion</label>
+                    <input type="text" class="form-control" formControlName="usuario_Direccion" data-toggle="tooltip" data-placement="right" title="Introduce tu Direccion">
+                    <div class="alert alert-danger error" *ngIf="(UsuarioDireccion.touched) && (UsuarioDireccion.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="UsuarioDireccion.errors.required">Campo Requerido</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Avatar</label>
+                    <input type="file" id="myfile" name="myfile" class="form-control" formControlName="usuario_Avatar" data-toggle="tooltip" data-placement="right" title="Selecciona tu Avatar">
+                    <div class="alert alert-danger error" *ngIf="(UsuarioAvatar.touched) && (UsuarioAvatar.invalid)" style="margin-top: 5px;">
+                    </div>
+                </div>
+
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <div *ngIf="0">
+                <h4>Student Added SuccessFully!</h4>
+                <button (click)="addForm()" class='btn btn-primary'>Add More Student</button>
+            </div>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>

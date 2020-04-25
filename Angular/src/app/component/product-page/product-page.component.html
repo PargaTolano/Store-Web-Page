@@ -1,0 +1,34 @@
+<div id="product-info-wrapper">
+    <div class="margin-wrapper">
+        <div id="slide" class="row">
+
+            <ul>
+                <li *ngFor="let mediaBox of mediaBoxes; let ind = index">
+                    <img [src]="getImageUrl(ind)">
+                </li>
+            </ul>
+
+            <ol id="paginacion">
+                <li class="dot" *ngFor="let mediaBox of mediaBoxes; let ind = index"><span class="fa fa-circle" (click)="circleClick(ind,$event)"></span></li>
+            </ol>
+
+            <div class="arrow" id="retroceder"><span class="fa fa-chevron-left"></span> </div>
+            <div class="arrow" id="avanzar"> <span class="fa fa-chevron-right"></span> </div>
+        </div>
+        <div class="producto-info-card">
+            <div class="card-header bg-dark">
+                <h1>{{product.nombre}}</h1>
+            </div>
+            <div class="card-body bg-dark">
+                {{product.descripcion}}
+                <!--<div class="price-container">
+                    $ 15.98
+                </div>-->
+                <div class="button-wrapper">
+                    <button class="active"> Descargar Ahora</button>
+                    <button class="ghost">  Agregar a "Leer mas tarde"</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

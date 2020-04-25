@@ -1,0 +1,48 @@
+    $main: #BB86FC;
+    $bk: #121212;
+    $far: #222;
+    $middle: #333;
+    $near: #444;
+    $error: #CF6679;
+    $margin-width: calc(100vw/64*8);
+    $main-text-color: #A9A9B0;
+    $highlight-color: #D9DDDC;
+    #main {
+        color: white;
+        background: $bk;
+    }
+    
+    h4 {
+        margin: 40px calc(100vw / 64);
+        background: $middle;
+        border: $middle solid 5px;
+        border-radius: 10px;
+        min-width: 550px;
+    }
+    
+    h2 {
+        margin: 40px calc(100vw / 64);
+        background: $middle;
+        border: $middle solid 5px;
+        border-radius: 10px;
+        min-width: 550px;
+    }
+    
+    .row {
+        position: relative;
+        margin: auto;
+        width: 100%;
+        height: auto;
+        clear: both;
+        display: table;
+    }
+    
+    .producto {
+        background-color: $far;
+        padding: 5px 10px;
+        border-radius: 10px;
+    }
+    
+    .imagen {
+        width: 100%;
+    }

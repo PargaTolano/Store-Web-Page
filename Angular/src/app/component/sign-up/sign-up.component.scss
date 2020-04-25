@@ -1,0 +1,31 @@
+$main: #BB86FC;
+$bk: #121212;
+$far: #222;
+$middle: #333;
+$near: #444;
+$error: #CF6679;
+#signup {
+    margin: 20px auto;
+    padding: 15px;
+    text-align: center;
+    background: $far;
+    border-radius: 5px;
+}
+
+form label {
+    background: none;
+}
+
+h3 {
+    text-align: center;
+    background: none;
+}
+
+.center-x {
+    margin: 0px auto;
+    background: none;
+}
+
+.error {
+    background: $error;
+}

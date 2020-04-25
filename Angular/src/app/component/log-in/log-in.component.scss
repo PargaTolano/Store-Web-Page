@@ -1,0 +1,17 @@
+$main: #BB86FC;
+$bk: #121212;
+$far: #222;
+$middle: #333;
+$near: #444;
+$error: #CF6679;
+.margin-x-auto {
+    margin: 0px auto;
+}
+
+.log-in {
+    background: $far;
+    margin: 20px auto;
+    border-radius: 5px;
+    text-align: center;
+    padding: 10px;
+}
