@@ -21,6 +21,7 @@ ul.product-row {
 
 .action-wrapper {
     background-color: $near;
+    border-radius: 0px 0px 5px 5px;
 }
 
 ul.product-row li a {
@@ -41,9 +42,13 @@ ul.product-row li a img {
     padding: 0 1rem;
     display: inline-block;
     overflow: hidden;
+    margin-bottom: 20px;
 }
 
 .product-info {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
     padding: 0 10px 10px 10px;
 }
 

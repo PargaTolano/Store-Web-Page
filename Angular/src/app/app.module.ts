@@ -13,6 +13,7 @@ import { ShoppingCartComponent } from './component/shopping-cart/shopping-cart.c
 import { ProductPageComponent } from './component/product-page/product-page.component';
 import { AddProductComponent } from './component/add-product/add-product.component';
 import { BrowseStoreComponent } from './component/browse-store/browse-store.component';
+import { FooterComponent } from './component/footer/footer.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { BrowseStoreComponent } from './component/browse-store/browse-store.comp
     ShoppingCartComponent,
     ProductPageComponent,
     AddProductComponent,
-    BrowseStoreComponent
+    BrowseStoreComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

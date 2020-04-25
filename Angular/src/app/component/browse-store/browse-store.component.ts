@@ -1,3 +1,4 @@
+import { ProductoService } from './../../service/producto.service';
 import { Router } from '@angular/router';
 import { Producto } from './../../model/producto';
 import { Component, OnInit } from '@angular/core';
@@ -91,10 +92,15 @@ export class BrowseStoreComponent implements OnInit {
     'https://bukovero.com/wp-content/uploads/2016/07/Harry_Potter_and_the_Cursed_Child_Special_Rehearsal_Edition_Book_Cover.jpg'
   ];
 
-  constructor(private router:Router) { }
+  constructor(private router:Router,
+    private productoService:ProductoService) { }
 
   ngOnInit(): void {
-    this.productos= this.prodcutosMock;
+    //this.productos= this.prodcutosMock;
+
+    this.productoService.getAll().subscribe(data=>{
+      this.productos = data;
+    });
   }
 
   productPage(id:number)
