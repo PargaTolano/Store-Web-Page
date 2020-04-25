@@ -12,6 +12,7 @@ import { LandingPageComponent } from './component/landing-page/landing-page.comp
 import { ShoppingCartComponent } from './component/shopping-cart/shopping-cart.component';
 import { ProductPageComponent } from './component/product-page/product-page.component';
 import { AddProductComponent } from './component/add-product/add-product.component';
+import { BrowseStoreComponent } from './component/browse-store/browse-store.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { AddProductComponent } from './component/add-product/add-product.compone
     LandingPageComponent,
     ShoppingCartComponent,
     ProductPageComponent,
-    AddProductComponent
+    AddProductComponent,
+    BrowseStoreComponent
   ],
   imports: [
     BrowserModule,

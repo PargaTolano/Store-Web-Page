@@ -1,0 +1,73 @@
+$main: #BB86FC;
+$bk: #121212;
+$far: #222;
+$middle: #333;
+$near: #444;
+$error: #CF6679;
+#container {
+    background: $far;
+    padding: 10px;
+}
+
+#container h4 {
+    padding-left: 1rem;
+}
+
+ul.product-row {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.action-wrapper {
+    background-color: $near;
+}
+
+ul.product-row li a {
+    text-decoration: none;
+}
+
+ul.product-row li a:hover {
+    cursor: pointer;
+}
+
+ul.product-row li a img {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.product-container {
+    width: 20%;
+    padding: 0 1rem;
+    display: inline-block;
+    overflow: hidden;
+}
+
+.product-info {
+    padding: 0 10px 10px 10px;
+}
+
+@media screen and (max-width:1333px) {
+    .product-container {
+        width: 20%;
+    }
+}
+
+@media screen and (max-width:1200px) {
+    .product-container {
+        width: 25%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .product-container {
+        width: 25%;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .product-container {
+        width: 100%;
+        padding: 0;
+    }
+}

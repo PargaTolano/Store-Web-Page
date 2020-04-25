@@ -1,3 +1,4 @@
+import { BrowseStoreComponent } from './component/browse-store/browse-store.component';
 import { ProductPageComponent   } from './component/product-page/product-page.component';
 import { ShoppingCartComponent  } from './component/shopping-cart/shopping-cart.component';
 import { LogInComponent         } from './component/log-in/log-in.component';
@@ -10,7 +11,8 @@ const routes: Routes = [
   { path:'sign-up'           ,  component:SignUpComponent        } ,
   { path:'log-in'            ,  component:LogInComponent         } ,
   { path:'shopping-cart'     ,  component:ShoppingCartComponent  } ,
-  { path:'product-page/:id'  ,  component:ProductPageComponent   }
+  { path:'product-page/:id'  ,  component:ProductPageComponent   } ,
+  { path:'browse-store'      ,  component:BrowseStoreComponent   }
 ];
 
 @NgModule({
