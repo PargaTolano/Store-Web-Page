@@ -5,6 +5,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="CarritoDeCompra")
 public class CarritoDeCompra {
@@ -13,9 +15,11 @@ public class CarritoDeCompra {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@JsonIgnoreProperties("carrito")
 	@OneToMany
 	private Set<ProductoComprado> productosComprados;
 	
+	@JsonIgnoreProperties("carrito")
 	@OneToOne
 	private Usuario usuario;
 

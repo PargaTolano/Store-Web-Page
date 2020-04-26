@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import DAO.ImagenDAO;
 import Model.Imagen;
+import Model.Producto;
 
 @Service
 @Transactional
@@ -39,5 +40,10 @@ public class Imagen_Service_Imp implements Imagen_Service {
 	@Override
 	public Imagen getById(Imagen i) {
 		return imagendao.getById(i);
+	}
+
+	@Override
+	public List<Imagen> producto(Producto p) {
+		return imagendao.producto(p);
 	}
 }

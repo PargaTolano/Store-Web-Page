@@ -2,7 +2,8 @@ package Model;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="ProductoComprado")
@@ -16,12 +17,18 @@ public class ProductoComprado {
 	
 	private float costo;
 	
-	@JsonManagedReference
+	@JsonIgnoreProperties("productosComprados")
+	@JsonBackReference
 	@ManyToOne
 	Producto producto;
 	
+	@JsonIgnoreProperties("productosComprados")
 	@ManyToOne
 	Compra compra;
+	
+	@JsonIgnoreProperties("productosComprados")
+	@ManyToOne
+	CarritoDeCompra carrito;
 
 	public int getId() {
 		return id;

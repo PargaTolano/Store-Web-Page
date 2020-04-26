@@ -46,10 +46,13 @@ ul.product-row li a img {
 }
 
 .product-info {
-    white-space: nowrap;
     overflow: hidden;
-    text-overflow: ellipsis;
     padding: 0 10px 10px 10px;
+}
+
+.product-info h5,
+.product-info p {
+    text-overflow: ellipsis;
 }
 
 @media screen and (max-width:1333px) {

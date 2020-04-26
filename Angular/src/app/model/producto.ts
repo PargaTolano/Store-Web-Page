@@ -1,3 +1,5 @@
+import { Video } from './video';
+import { Imagen } from './imagen';
 import { ProductoComprado } from './producto-comprado';
 
 
@@ -15,9 +17,9 @@ export class Producto {
 	
 	descuento:number;
 	
-	imagenes=[];
+	imagenes:Imagen[];
 
-	videos=[];
+	videos:Video[];
 	
 	productosComprados:ProductoComprado[];
 }

@@ -2,6 +2,8 @@ package Model;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.Set;
 import java.util.Date;
 
@@ -19,9 +21,11 @@ public class Compra {
 	
 	private float  total;
 	
+	@JsonIgnoreProperties("compra")
 	@OneToMany
 	private Set<ProductoComprado> productosComprados;
 	
+	@JsonIgnoreProperties("compras")
 	@ManyToOne
 	private Usuario usuario;
 

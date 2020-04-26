@@ -2,7 +2,9 @@ package Model;
 
 import javax.persistence.*;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 @Entity
 @Table(name="imagen")
@@ -14,14 +16,20 @@ public class Imagen {
 	
 	private byte[] bytes;
 	
-	@JsonManagedReference
+	@JsonIgnoreProperties("imagenes")
+	@JsonBackReference
 	@ManyToOne
-	Producto productos;
+	Producto producto;
 
 	public int getId() {
 		return id;
 	}
 
+	public void setId(int id)
+	{
+		this.id = id;
+	}
+	
 	public byte[] getBytes() {
 		return bytes;
 	}
@@ -30,12 +38,12 @@ public class Imagen {
 		this.bytes = bytes;
 	}
 
-	public Producto getProductos() {
-		return productos;
+	public Producto getProducto() {
+		return producto;
 	}
 
-	public void setProductos(Producto productos) {
-		this.productos = productos;
+	public void setProductos(Producto producto) {
+		this.producto = producto;
 	}
 	
 	

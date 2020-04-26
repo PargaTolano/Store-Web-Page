@@ -60,6 +60,9 @@ public class ProductoDAO_Imp implements ProductoDAO {
 		Session currentSession = sessionFactory.getCurrentSession();
 		ProcedureCall procedureCall= currentSession.createStoredProcedureCall("producto_all", Producto.class);
 		List<Producto> list=procedureCall.getResultList();
+		list.get(0).getImagenes().size();
+		list.get(0).getVideos().size();
+		list.get(0).getProductosComprados().size();
 		return list;
 	}
 

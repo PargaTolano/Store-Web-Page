@@ -1,3 +1,5 @@
+import { Imagen } from './../../model/imagen';
+import { ImagenService } from './../../service/imagen.service';
 import { ProductoService } from './../../service/producto.service';
 import { Router } from '@angular/router';
 import { Producto } from './../../model/producto';
@@ -92,15 +94,30 @@ export class BrowseStoreComponent implements OnInit {
     'https://bukovero.com/wp-content/uploads/2016/07/Harry_Potter_and_the_Cursed_Child_Special_Rehearsal_Edition_Book_Cover.jpg'
   ];
 
-  constructor(private router:Router,
-    private productoService:ProductoService) { }
+
+  pito():string{  return "http://localhost:8080/api/imagen-mostrar-url/1"; }
+
+  constructor(
+    private router:         Router,
+    private productoService:ProductoService,
+    private imagenService:  ImagenService) { }
 
   ngOnInit(): void {
     //this.productos= this.prodcutosMock;
-
     this.productoService.getAll().subscribe(data=>{
+
       this.productos = data;
+
     });
+  }
+
+  imageUrl(imagen:Imagen):string
+  {
+    let a = this.imagenService.imagenUrlUrl(imagen);
+
+    console.log(a);
+
+    return a;
   }
 
   productPage(id:number)

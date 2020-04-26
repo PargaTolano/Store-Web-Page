@@ -4,6 +4,8 @@ import javax.persistence.*;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.util.Collection;
 import java.util.List;
@@ -26,15 +28,18 @@ public class Producto {
 	
 	private int descuento;
 	
-	@JsonBackReference
+	@JsonIgnoreProperties("producto")
+	@JsonManagedReference
 	@OneToMany
 	List<Imagen> imagenes;
 	
-	@JsonBackReference
+	@JsonIgnoreProperties("producto")
+	@JsonManagedReference
 	@OneToMany
 	List<Video> videos;
 	
-	@JsonBackReference
+	@JsonIgnoreProperties("producto")
+	@JsonManagedReference
 	@OneToMany
 	List<ProductoComprado> productosComprados;
 
@@ -86,7 +91,7 @@ public class Producto {
 		this.descuento = descuento;
 	}
 
-	public Collection<Imagen> getImagenes() {
+	public List<Imagen> getImagenes() {
 		return imagenes;
 	}
 
@@ -102,7 +107,7 @@ public class Producto {
 		this.videos = videos;
 	}
 
-	public Collection<ProductoComprado> getProductosComprados() {
+	public List<ProductoComprado> getProductosComprados() {
 		return productosComprados;
 	}
 

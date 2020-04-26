@@ -98,7 +98,7 @@ DELIMITER //
 CREATE PROCEDURE ejemplo2.imagen_all
 ()
 BEGIN
-SELECT I.Id, I.productos_id, I.bytes
+SELECT I.Id, I.producto_id, I.bytes
 FROM   ejemplo2.imagen I;
 END //DELIMITER ;
 
@@ -106,9 +106,18 @@ DELIMITER //
 CREATE PROCEDURE ejemplo2.imagen_by_id
 (IN id INTEGER)
 BEGIN
-SELECT I.Id, I.productos_id, I.bytes
+SELECT I.Id, I.producto_id, I.bytes
 FROM   ejemplo2.imagen I
 WHERE  I.id = id;
+END //DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE ejemplo2.imagen_producto_by_id
+(IN id INTEGER)
+BEGIN
+SELECT I.Id, I.producto_id, I.bytes
+FROM   ejemplo2.imagen I
+WHERE  I.producto_id = id;
 END //DELIMITER ;
 
 DELIMITER //
@@ -180,13 +189,13 @@ call carrito_todos;
 INSERT INTO producto(descripcion, descuento, nombre, precio, unidades) 
 VALUES ('libro bien wonito', 15, 'El Prisinpito', 15.98, 69);
 
-INSERT INTO IMAGEN(bytes, productos_id)
+INSERT INTO IMAGEN(bytes, producto_id)
 VALUES('https://www.elejandria.com/covers/El_principito-Antoine_De_Saint_Exupery-lg.png',1);
 
 INSERT INTO producto_imagen(producto_id, imagenes_id)
 VALUES(1,1);
 
-INSERT INTO video(bytes, productos_id)
+INSERT INTO video(bytes, producto_id)
 VALUES('https://www.elejandria.com/covers/El_principito-Antoine_De_Saint_Exupery-lg.png',1);
 
 INSERT INTO producto_video(producto_id, videos_id)
@@ -199,4 +208,6 @@ call producto_by_id(1);
 call imagen_all;
 
 call video_all;
+
+call imagen_by_id(1)
 */

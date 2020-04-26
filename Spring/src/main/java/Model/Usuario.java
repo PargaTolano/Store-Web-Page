@@ -4,6 +4,8 @@ import java.util.Set;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 @Entity
 @Table(name="usuario")
 public class Usuario {
@@ -28,9 +30,11 @@ public class Usuario {
 	
 	private byte[] avatar;
 	
+	@JsonIgnoreProperties("usuario")
 	@OneToMany
 	private Set<Compra> compras;
 	
+	@JsonIgnoreProperties("usuario")
 	@OneToOne
 	private CarritoDeCompra carrito;
 
