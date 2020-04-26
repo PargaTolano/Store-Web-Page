@@ -210,4 +210,6 @@ call imagen_all;
 call video_all;
 
 call imagen_by_id(1)
+
+call imagen_producto_by_id(1)
 */
