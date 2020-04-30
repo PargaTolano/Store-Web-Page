@@ -8,7 +8,7 @@ import { Injectable } from '@angular/core';
 })
 export class ProductoService {
 
-  private baseUrl = "http://localhost:8080/api/productos-";
+  private baseUrl = `${window.location.protocol}//${window.location.hostname}:8080/api/productos-`;
 
   constructor(private http:HttpClient) { }
 

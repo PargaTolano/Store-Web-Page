@@ -8,12 +8,17 @@
                 </li>
             </ul>
 
-            <ol id="paginacion">
-                <li class="dot" *ngFor="let mediaBox of mediaBoxes; let ind = index"><span class="fa fa-circle" (click)="circleClick(ind,$event)"></span></li>
-            </ol>
+            <div *ngIf="imgCount > 1">
 
-            <div class="arrow" id="retroceder"><span class="fa fa-chevron-left"></span> </div>
-            <div class="arrow" id="avanzar"> <span class="fa fa-chevron-right"></span> </div>
+                <ol id="paginacion">
+                    <li class="dot" *ngFor="let mediaBox of mediaBoxes; let ind = index"><span class="fa fa-circle" (click)="circleClick(ind,$event)"></span></li>
+                </ol>
+
+                <div class="arrow" id="retroceder"><span class="fa fa-chevron-left"></span> </div>
+                <div class="arrow" id="avanzar"> <span class="fa fa-chevron-right"></span> </div>
+
+            </div>
+
         </div>
         <div class="producto-info-card">
             <div class="card-header bg-dark">

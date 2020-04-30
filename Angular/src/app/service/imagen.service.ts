@@ -9,7 +9,7 @@ import { Imagen } from '../model/imagen';
 })
 export class ImagenService {
 
-  private baseUrl = "http://localhost:8080/api/imagen-";
+  private baseUrl = `${window.location.protocol}//${window.location.hostname}:8080/api/imagen-`;
 
   constructor(private http:HttpClient) { }
 

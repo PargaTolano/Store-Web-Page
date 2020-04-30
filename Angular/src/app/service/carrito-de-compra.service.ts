@@ -10,7 +10,7 @@ import { Injectable } from '@angular/core';
 export class CarritoDeCompraService {
 
   constructor(private http:HttpClient,
-    private baseUrl="localhost:8080/api/carrito-") { }
+    private baseUrl=`${window.location.protocol}//${window.location.hostname }:8080/api/carrito-`) { }
 
   removeProductoComprado(carrito:CarritoDeCompra)
   {

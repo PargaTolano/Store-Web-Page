@@ -1,7 +1,9 @@
+import { ImagenService } from './../../service/imagen.service';
 import { ProductoService } from './../../service/producto.service';
 import { Producto } from './../../model/producto';
 import { ActivatedRoute } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
+import { Imagen } from 'src/app/model/imagen';
 
 declare var $:any;
 declare var jquery:any;
@@ -15,65 +17,55 @@ export class ProductPageComponent implements OnInit{
 
   private leftValue:number = 0;
 
-  private imgCount:number  = 0;
-
-  private mockMediaBoxes = [
-
-    {'url':'https://www.elejandria.com/covers/El_principito-Antoine_De_Saint_Exupery-lg.png'},
-    {'url':'https://cutewallpaper.org/21/video-games-wallpapers-1080p/Gaming-Wallpapers-Top-Free-Gaming-Backgrounds-.jpg'},
-    {'url':'https://thewallpaper.co//wp-content/uploads/2016/10/hd-game-backgrounds-1080p-free-download-hd-desktop-wallpapers-amazing-images-background-photos-1080p-free-images-desktop-backgrounds-artworks-ultra-hd-1920x1080.jpg'}
-  ];
-
-  private id:string;
+  imgCount:number  = 0;
 
   product:Producto = new Producto();
 
   private mediaWidth:number = 0;
 
-  mediaBoxes:any[];
+  mediaBoxes:Imagen[];
 
-  constructor(private route:ActivatedRoute, private service:ProductoService) { }
+  constructor(private route:ActivatedRoute, private service:ProductoService, private imagenService:ImagenService) { }
 
   ngOnInit(): void {
     
-    this.id = this.route.snapshot.paramMap.get('id');
+    let id = this.route.snapshot.paramMap.get('id');
 
-    this.service.getById(Number(this.id)).subscribe(data=>{
+    this.service.getById(Number(id)).subscribe(data=>{
 
         this.product = data;
+
+        this.mediaBoxes = this.product.imagenes;
+
+        this.imgCount = this.mediaBoxes.length;
+
+        this.mediaWidth = 100 / this.imgCount;
+
+        $("div.media img").css({
+          "width":(100/this.mediaWidth)+"%"
+        });
+      
+        $("#retroceder").click(event=>{
+          if(this.leftValue < 0 )
+          {
+            this.leftValue+=100;
+          }
+          this.carrousselScroll(this.leftValue);
+        });
+      
+        $("#avanzar").   click(event=>{
+          if(this.leftValue > -(this.imgCount-1) * 100)
+          {
+            this.leftValue-=100;
+          }
+          this.carrousselScroll(this.leftValue);
+        });
     },
     error=>{
 
       console.log( error);
 
     });
-
-    this.mediaBoxes = this.product.imagenes;
-
-    this.imgCount = this.mediaBoxes.length;
-
-    this.mediaWidth = 100 / this.imgCount;
-
-    $("div.media img").css({
-      "width":(100/this.mediaWidth)+"%"
-    });
-
-    $("#retroceder").click(event=>{
-      if(this.leftValue < 0 )
-      {
-        this.leftValue+=100;
-      }
-      this.carrousselScroll(this.leftValue);
-    });
-
-    $("#avanzar").   click(event=>{
-      if(this.leftValue > -(this.imgCount-1) * 100)
-      {
-        this.leftValue-=100;
-      }
-      this.carrousselScroll(this.leftValue);
-    });
-
   }
 
   circleClick(i,event){
@@ -100,6 +92,6 @@ export class ProductPageComponent implements OnInit{
 
   getImageUrl(ind):string
   {
-    return this.mediaBoxes[ind].url;
+    return this.imagenService.imagenUrlUrl(this.mediaBoxes[ind]);
   }
 }
