@@ -1,0 +1,69 @@
+$main: #BB86FC;
+$bk: #121212;
+$far: #222;
+$middle: #333;
+$near: #444;
+$error: #CF6679;
+$main-text-color: #A9A9B0;
+$highlight-color: #D9DDDC;
+$selection-color:#990000;
+footer {
+    width: 100%;
+    background: $middle;
+    color: $main-text-color;
+}
+
+::selection {
+    color: $highlight-color;
+    background: $selection-color;
+}
+
+.divisions ul {
+    list-style: none;
+    margin: 16px 0 0 0;
+    padding: 0;
+    text-align: center;
+}
+
+.divisions ul li {
+    display: inline-block;
+    text-align: center;
+    width: 20%;
+    margin: 0 15px;
+    padding: 10px;
+}
+
+.divisions ul li a {
+    color: $main-text-color;
+}
+
+.divisions ul li a:hover {
+    color: $highlight-color;
+}
+
+.bottom-divisions {
+    color: $main-text-color;
+}
+
+.bottom-divisions div {
+    padding: 15px 0;
+    margin-bottom: 16px;
+}
+
+.bottom-divisions .license {
+    float: left;
+    font-size: 12px;
+    font-weight: lighter;
+}
+
+.bottom-divisions .scroll-top {
+    float: right;
+}
+
+.bottom-divisions .scroll-top i {
+    color: $highlight-color;
+}
+
+.bottom-divisions .scroll-top:hover {
+    cursor: pointer;
+}
