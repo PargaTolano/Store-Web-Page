@@ -33,19 +33,6 @@ export class PdfService {
     return this.http.post(`${this.baseUrl}product-blob`,p);
   }
 
-  DownloadPDF(pdf:PDFFile){
-
-    var file = new Blob([pdf.contenido], {type: 'application/pdf'});
-    var fileURL = URL.createObjectURL(file);
-
-    const a = document.createElement('a');
-    a.style.display="none";
-
-    a.href = fileURL;
-    a.download = pdf.nombre;
-    a.click();
-  }
-
   DownloadAsPDF(nombre:string,arr:ArrayBuffer)
   {
     var file = new Blob([arr], {type: 'application/pdf'});

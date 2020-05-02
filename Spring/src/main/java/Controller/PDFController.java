@@ -81,10 +81,4 @@ public class PDFController {
 		String encoded = Base64.getEncoder().encodeToString(pdfService.byProduct(p).getContenido());
 		return encoded;
 	}
-	
-	@GetMapping("pdf-product-blob-ex")
-	public byte[] byProductArr()
-	{
-		return pdfService.byProduct(productoService.getAll().get(0)).getContenido();
-	}
 }

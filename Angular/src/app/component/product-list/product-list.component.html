@@ -1,0 +1,23 @@
+<div class="container">
+    <div *ngFor="let producto of productos" class="card flex-row flex-wrap bg-dark" style="margin:20px 0">
+        <div class="card-header border-0">
+            <div class="loader" *ngIf="!producto.imagenes[0]">
+                <div class="spinner">
+                    <div class="cube1"></div>
+                    <div class="cube2"></div>
+                </div>
+            </div>
+            <img [src]="getUrl(producto)" alt="" width=200px>
+        </div>
+        <div class="card-block px-2">
+            <h4 class="card-title">{{producto.nombre}}</h4>
+            <p class="card-text">{{producto.descripcion}}</p>
+            <a href="#" class="btn btn-warning" style="margin-right: 30px;" (click)="Editar(producto.id)">EDITAR</a>
+            <a href="#" class="btn btn-danger" (click)="Delete(producto)">BORRAR</a>
+        </div>
+
+
+
+
+    </div>
+</div>

@@ -1,9 +1,10 @@
 <div id="cms" class="Cms">
-    <a routerLink='add-product'>             Agregar Producto                                               </a>
-
+    <div class="container">
+        <a routerLink='add-product'>             Agregar Producto                                               </a>
+        <a routerLink='product-list'>            Listar  Productos                                              </a>
+    </div>
 </div>
 
-<span onclick="openNav()">open</span>
-<div id="main">
+<div id="cms-main">
     <router-outlet></router-outlet>
 </div>

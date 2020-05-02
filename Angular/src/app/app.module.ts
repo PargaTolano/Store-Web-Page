@@ -19,6 +19,7 @@ import { BrowseStoreComponent } from './component/browse-store/browse-store.comp
 import { FooterComponent } from './component/footer/footer.component';
 import { CmsComponent } from './component/cms/cms.component';
 import { EditProductComponent } from './component/edit-product/edit-product.component';
+import { ProductListComponent } from './component/product-list/product-list.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +34,8 @@ import { EditProductComponent } from './component/edit-product/edit-product.comp
     BrowseStoreComponent,
     FooterComponent,
     CmsComponent,
-    EditProductComponent
+    EditProductComponent,
+    ProductListComponent
   ],
   imports: [
     BrowserModule,

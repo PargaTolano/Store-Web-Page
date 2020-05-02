@@ -370,9 +370,14 @@ export class BrowseStoreComponent implements OnInit {
     },error=>console.log(error));
   }
 
-  imageUrl(imagen:Imagen):string
+  imageUrl(producto:Producto):string
   {
-    let a = this.imagenService.imagenUrl(imagen);
+    let a:string = "";
+    this.imagenService.getByAllByProduct(producto).subscribe(data=>{
+
+      a = this.imagenService.imagenUrl(data[0]);
+
+    })
 
     return a;
   }
