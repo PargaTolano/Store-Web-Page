@@ -1,4 +1,19 @@
 <div id="product-info-wrapper">
+    <div class="card flex-row flex-wrap bg-dark">
+        <div class="card-header border-0">
+            <img [src]="getImageUrl(0)">
+        </div>
+        <div class="card-block px-2 fr">
+            <h4 class="card-title">{{product.nombre}}</h4>
+            <p class="card-text"> {{product.descripcion}}</p>
+            <button class="active" (click)="Descargar()"> Descargar Ahora</button>
+        </div>
+        <div class="w-100"></div>
+        <div class="card-footer w-100 text-muted">
+            Recomendado 100%, llevele
+        </div>
+    </div>
+    <!--
     <div class="margin-wrapper">
         <div id="slide" class="row">
 
@@ -28,12 +43,12 @@
                 {{product.descripcion}}
                 <!--<div class="price-container">
                     $ 15.98
-                </div>-->
+                </div>-/->
                 <div class="button-wrapper">
-                    <button class="active"> Descargar Ahora</button>
-                    <button class="ghost">  Agregar a "Leer mas tarde"</button>
+                    <button class="active" (click)="Descargar()"> Descargar Ahora</button>
+                    <!--<button class="ghost">  Agregar a "Leer mas tarde"</button>-/->
                 </div>
             </div>
         </div>
-    </div>
+    </div>-->
 </div>

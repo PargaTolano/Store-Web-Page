@@ -1,3 +1,4 @@
+import { PdfService } from './../../service/pdf.service';
 import { ImagenService } from './../../service/imagen.service';
 import { ProductoService } from './../../service/producto.service';
 import { Producto } from './../../model/producto';
@@ -16,6 +17,7 @@ declare var jquery:any;
 export class ProductPageComponent implements OnInit{
 
   private leftValue:number = 0;
+
   imgCount:number  = 0;
 
   product:Producto = new Producto();
@@ -24,7 +26,7 @@ export class ProductPageComponent implements OnInit{
 
   mediaBoxes:Imagen[];
 
-  constructor(private route:ActivatedRoute, private service:ProductoService, private imagenService:ImagenService) { }
+  constructor(private route:ActivatedRoute, private service:ProductoService, private imagenService:ImagenService, private pdfService:PdfService) { }
 
   ngOnInit(): void {
     
@@ -67,6 +69,25 @@ export class ProductPageComponent implements OnInit{
     });
   }
 
+  Descargar(){
+    this.pdfService.byProducto(this.product).subscribe(data=>{
+
+      let fn = function _base64ToArrayBuffer(base64:string) {
+        var binary_string = window.atob(base64);
+        var len = binary_string.length;
+        var bytes = new Uint8Array(len);
+        for (var i = 0; i < len; i++) {
+            bytes[i] = binary_string.charCodeAt(i);
+        }
+        return bytes.buffer;
+        }
+      
+      let byteArr:ArrayBuffer = fn(data.encoded);
+
+      this.pdfService.DownloadAsPDF(data.pdf.nombre, byteArr);
+    },error=>console.log(error));
+  }
+
   circleClick(i,event){
     this.leftValue= i*-100;
     this.carrousselScroll(this.leftValue);
@@ -91,12 +112,7 @@ export class ProductPageComponent implements OnInit{
 
   getImageUrl(ind):string
   {
-    return this.imagenService.imagenUrlUrl(this.mediaBoxes[ind]);
-  }
-
-  downloadPDF(){
-
-   
+    return this.imagenService.imagenUrl(this.mediaBoxes[ind]);
   }
   
 }

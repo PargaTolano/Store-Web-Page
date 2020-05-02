@@ -6,6 +6,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import DAO.PDFDAO;
 import Model.PDFFile;
+import Model.Producto;
 
 @Service
 @Transactional
@@ -27,6 +28,11 @@ public class PDF_Service_Imp implements PDF_Service {
 	@Override
 	public boolean update(PDFFile pdf) {
 		return pdfdao.update(pdf);
+	}
+
+	@Override
+	public PDFFile byProduct(Producto p) {
+		return pdfdao.byProduct(p);
 	}
 
 }

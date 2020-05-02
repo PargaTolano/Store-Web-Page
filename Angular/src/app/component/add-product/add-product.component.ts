@@ -89,8 +89,8 @@ export class AddProductComponent implements OnInit {
 
         let b64str2 = this.bArrToB64(this.pdf.contenido) as string;
             
-        this.pdf.id = 13213213;
-        this.pdf.producto = this.producto;
+        this.pdf.id = 13213;
+        this.pdf.producto = data;
         this.pdfService.save(this.pdf,b64str2)
           .subscribe(data =>{
             console.log(data)}, error => console.log(error));

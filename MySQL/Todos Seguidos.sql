@@ -185,21 +185,6 @@ call usuario_todos;
 
 call carrito_todos;
 
-INSERT INTO producto(descripcion, descuento, nombre, precio, unidades) 
-VALUES ('libro bien wonito', 15, 'El Prisinpito', 15.98, 69);
-
-INSERT INTO IMAGEN(bytes, producto_id)
-VALUES('https://www.elejandria.com/covers/El_principito-Antoine_De_Saint_Exupery-lg.png',1);
-
-INSERT INTO producto_imagen(producto_id, imagenes_id)
-VALUES(1,1);
-
-INSERT INTO video(bytes, producto_id)
-VALUES('https://www.elejandria.com/covers/El_principito-Antoine_De_Saint_Exupery-lg.png',1);
-
-INSERT INTO producto_video(producto_id, videos_id)
-VALUES(1,1);
-
 call producto_all;
 
 #DELETE FROM Producto WHERE ID >1;
@@ -209,6 +194,8 @@ call producto_all;
 call producto_by_id(1);
 
 call imagen_all;
+
+SELECT*FROM producto_imagen;
 
 #DELETE FROM imagen WHERE id > 1;
 
@@ -241,3 +228,37 @@ SELECT PDF.id, PDF.producto_id, PDF.contenido, PDF.nombre
 FROM   ejemplo2.PDF
 WHERE  PDF.ID = ID;
 END //DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE ejemplo2.PDF_Producto_Relate
+(IN producto_id INTEGER,IN pdf_id INTEGER)
+BEGIN
+UPDATE ejemplo2.producto
+SET ejemplo2.producto.pdf_id = pdf_id
+WHERE ejemplo2.producto.id = producto_id;
+
+END //DELIMITER ;
+
+DELIMITER //
+create PROCEDURE ejemplo2.PDF_byProducto
+(IN producto_id INTEGER)
+BEGIN
+
+SELECT pdf.id, pdf.contenido, pdf.nombre, pdf.producto_id
+FROM pdf
+where pdf.producto_id = producto_id;
+
+END //DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE ejemplo2.Imagen_Producto_Relate
+(IN producto_id INTEGER,IN imagen_id INTEGER)
+BEGIN
+
+INSERT INTO producto_imagen
+VALUES(producto_id,imagen_id);
+
+END //DELIMITER ;
+
+call Imagen_Producto_Relate(1,1);
+SELECT*FROM PRODUCTO_IMAGEN;

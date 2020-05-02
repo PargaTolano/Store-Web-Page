@@ -1,3 +1,5 @@
+import { Observable } from 'rxjs';
+import { Producto } from './../model/producto';
 import { PDFFile } from './../model/pdffile';
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
@@ -10,6 +12,7 @@ export class PdfService {
   constructor(private http:HttpClient){}
 
   save(pdf:PDFFile, str:string){
+    pdf.contenido = null;
     return this.http.post(`${this.baseUrl}save`,  {"pdf":pdf,"base64Str":str});
   }
 
@@ -21,16 +24,38 @@ export class PdfService {
     return this.http.post(`${this.baseUrl}delete`, pdf);
   }
 
+  byProducto(p:Producto):Observable<any>
+  {
+    return this.http.post(`${this.baseUrl}product`,p);
+  }
+
+  byProductoBlob(p:Producto):Observable<any>{
+    return this.http.post(`${this.baseUrl}product-blob`,p);
+  }
+
   DownloadPDF(pdf:PDFFile){
 
-    let file = new Blob([pdf.contenido], {type: 'application/pdf'});
-    let fileURL = URL.createObjectURL(file);
+    var file = new Blob([pdf.contenido], {type: 'application/pdf'});
+    var fileURL = URL.createObjectURL(file);
 
     const a = document.createElement('a');
     a.style.display="none";
 
     a.href = fileURL;
     a.download = pdf.nombre;
+    a.click();
+  }
+
+  DownloadAsPDF(nombre:string,arr:ArrayBuffer)
+  {
+    var file = new Blob([arr], {type: 'application/pdf'});
+    var fileURL = URL.createObjectURL(file);
+    
+    const a = document.createElement('a');
+    a.style.display="none";
+
+    a.href = fileURL;
+    a.download = nombre;
     a.click();
   }
 

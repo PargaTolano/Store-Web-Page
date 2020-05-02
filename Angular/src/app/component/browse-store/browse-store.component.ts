@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Imagen } from './../../model/imagen';
 import { ImagenService } from './../../service/imagen.service';
 import { ProductoService } from './../../service/producto.service';
@@ -354,7 +355,7 @@ export class BrowseStoreComponent implements OnInit {
   constructor(
     private router:         Router,
     private productoService:ProductoService,
-    private imagenService:  ImagenService) { }
+    private imagenService:  ImagenService,private http:HttpClient) { }
 
   ngOnInit(): void {
     
@@ -362,14 +363,23 @@ export class BrowseStoreComponent implements OnInit {
 
       this.productos = data;
 
+      this.productos.forEach((value,index)=>{
+        console.log(value);
+      })
+
     },error=>console.log(error));
   }
 
   imageUrl(imagen:Imagen):string
   {
-    let a = this.imagenService.imagenUrlUrl(imagen);
+    let a = this.imagenService.imagenUrl(imagen);
 
-    console.log(a);
+    return a;
+  }
+
+  imageUrlUrl(imagen:Imagen):string
+  {
+    let a = this.imagenService.imagenUrlUrl(imagen);
 
     return a;
   }

@@ -25,6 +25,11 @@ public class ImagenDAO_Imp implements ImagenDAO {
 		boolean status=false;
 		try {
 			sessionFactory.getCurrentSession().save(i);
+			Session currentSession = sessionFactory.getCurrentSession();
+			currentSession.save(i);
+			ProcedureCall procedureCall=currentSession.createStoredProcedureCall("Imagen_Producto_Relate");
+			procedureCall.registerParameter(1, int.class, ParameterMode.IN).bindValue(i.getProducto().getId());
+			procedureCall.registerParameter(2, int.class, ParameterMode.IN).bindValue(i.getId());
 			status=true;
 		} catch (Exception e) {
 			e.printStackTrace();
