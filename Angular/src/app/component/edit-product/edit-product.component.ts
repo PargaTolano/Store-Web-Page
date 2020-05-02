@@ -1,4 +1,3 @@
-import { PdfService } from './../../service/pdf.service';
 import { ImagenService } from './../../service/imagen.service';
 import { PDFFile } from './../../model/pdffile';
 import { Producto } from './../../model/producto';
@@ -7,23 +6,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { Imagen } from 'src/app/model/imagen';
 
+declare var $:any;
+declare var jquery:any;
 
 @Component({
-  selector: 'app-add-product',
-  templateUrl: './add-product.component.html',
-  styleUrls: ['./add-product.component.scss']
+  selector: 'app-edit-product',
+  templateUrl: './edit-product.component.html',
+  styleUrls: ['./edit-product.component.scss']
 })
-export class AddProductComponent implements OnInit {
+export class EditProductComponent implements OnInit {
 
-  constructor(private ProductoService:ProductoService,
-    private imagenService:ImagenService,
-    private pdfService:PdfService) { }
+  constructor(private ProductoService:ProductoService,private imagenService:ImagenService) { }
 
   producto:Producto;
-
-  pdf:PDFFile;
-
-  imagen:Imagen;
 
   submitted:boolean = false;
 
@@ -39,10 +34,18 @@ export class AddProductComponent implements OnInit {
 
   imageSrc:string;
 
+  private leftValue:number = 0;
+
+  imgCount:number  = 0;
+
+  mediaBoxes:Imagen[];
+
   ngOnInit(): void {
     this.submitted = false;
-    this.pdf = new PDFFile();
-    this.imagen = new Imagen();
+    this.producto = new Producto();
+    this.producto.imagenes = <Imagen[]>[];
+    this.producto.imagenes[0] = new Imagen();
+    this.producto.pdf = new PDFFile();
   }
 
   saveForm  =               new FormGroup({
@@ -55,47 +58,18 @@ export class AddProductComponent implements OnInit {
   });
 
   SaveId(saveid){
-    this.producto=new Producto();
-    this.producto.nombre         = this.ProductoNombre     .value;
-    this.producto.descripcion    = this.ProductoDescripcion.value;
-    this.producto.unidades       = this.ProductoUnidades   .value;
-    this.producto.precio         = this.ProductoPrecio     .value;
-    this.producto.imagenes       = null;
-    this.producto.pdf            = null;
+    this.producto=new Producto();   
+    this.producto.id             = this.Productoid        .value;
+    this.producto.nombre         = this.ProductoNombre    .value;
+    this.producto.descripcion    = this.ProductoDescripcion    .value;
+    this.producto.unidades       = this.ProductoUnidades  .value;
+    this.submitted = true;
     this.save();
   }
   
-  bArrToB64( buffer ) {
-    var binary = '';
-    var bytes = new Uint8Array( buffer );
-    var len = bytes.byteLength;
-    for (var i = 0; i < len; i++) {
-        binary += String.fromCharCode( bytes[ i ] );
-    }
-    return window.btoa( binary );
-  }
-
   save() {
     this.ProductoService.save(this.producto)
-      .subscribe(data =>{
-
-        let b64str:string  = this.bArrToB64(this.imagen.bytes) as string;
-    
-        this.imagen.id = 13213213;
-        this.imagen.producto = data;
-        this.imagenService.save(this.imagen,b64str)
-          .subscribe(data =>{
-            console.log(data)}, error => console.log(error));
-
-        let b64str2 = this.bArrToB64(this.pdf.contenido) as string;
-            
-        this.pdf.id = 13213213;
-        this.pdf.producto = this.producto;
-        this.pdfService.save(this.pdf,b64str2)
-          .subscribe(data =>{
-            console.log(data)}, error => console.log(error));
-
-      }, error => console.log(error));
+      .subscribe(data => console.log(data), error => console.log(error));
   }
 
   get Productoid(){
@@ -143,19 +117,22 @@ export class AddProductComponent implements OnInit {
       const file = event.target.files[0];
       byteReader.readAsArrayBuffer(file);
       byteReader.onload = () => {
-        this.imagen.bytes = new Int8Array(byteReader.result as ArrayBuffer);
+        
+        this.producto.imagenes[0].bytes = new Int8Array(byteReader.result as ArrayBuffer);
+        console.log(this.producto.imagenes[0]);
+   
       };
 
       urlReader.readAsDataURL(file);
       urlReader.onload = () => {
+        
         this.imageSrc = urlReader.result as string;
+        console.log(this.imageSrc)
       };
    
     }
-    else{
-      this.imagen   = undefined;
+    else
       this.imageSrc = undefined;
-    }
   }
 
   onFileChangePDF(event) {
@@ -168,14 +145,39 @@ export class AddProductComponent implements OnInit {
       
       reader.onload = () => {
       
-        this.pdf.nombre       = file.name;
-        this.pdf.contenido    = new Int8Array(reader.result as ArrayBuffer);
+        this.producto.pdf.nombre      = file.name;
+        this.producto.pdf.contenido    = new Int8Array(reader.result as ArrayBuffer);
+        console.log(this.producto.pdf)
         
       };
    
     }
-    else{
-      this.pdf = null;
-    }
+  }
+
+  circleClick(i,event){
+    this.leftValue= i*-100;
+    this.carrousselScroll(this.leftValue);
+  }
+
+  updateDot(ind)
+  {
+    $("ol li").css('opacity',0.5);
+    $("ol li").each((index,value)=>{
+      if(index===ind)
+        $(value).css('opacity',1);
+    });
+  }
+
+  carrousselScroll(leftValue:number)
+  {
+    this.updateDot(Math.floor(leftValue/-100));
+    $('#slide ul').css({
+      'left':leftValue+"%"
+    });
+  }
+
+  getImageUrl(ind):string
+  {
+    return this.imagenService.imagenUrlUrl(this.mediaBoxes[ind]);
   }
 }

@@ -16,7 +16,6 @@ declare var jquery:any;
 export class ProductPageComponent implements OnInit{
 
   private leftValue:number = 0;
-
   imgCount:number  = 0;
 
   product:Producto = new Producto();
@@ -94,4 +93,12 @@ export class ProductPageComponent implements OnInit{
   {
     return this.imagenService.imagenUrlUrl(this.mediaBoxes[ind]);
   }
+
+  downloadPDF(){
+
+   
+  }
+  
 }
+
+  

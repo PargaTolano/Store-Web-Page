@@ -12,6 +12,7 @@ public class Video {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@Column(columnDefinition="LONGBLOB")
 	private byte[] bytes;
 	
 	@JsonIgnoreProperties("videos")

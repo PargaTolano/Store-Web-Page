@@ -24,6 +24,24 @@ public class ProductoController {
 		return productoService.getAll();
 	}
 	
+	@PostMapping("productos-save")
+	public Producto save(@RequestBody Producto p)
+	{
+		return productoService.save(p);
+	}
+	
+	@PostMapping("productos-update")
+	public Producto update(@RequestBody Producto p)
+	{
+		return productoService.update(p);
+	}
+	
+	@PostMapping("productos-delete")
+	public Producto delete(@RequestBody Producto p)
+	{
+		return productoService.delete(p);
+	}
+	
 	@GetMapping("productos-id/{id}")
 	public Producto getById(@PathVariable(name="id") int id)
 	{

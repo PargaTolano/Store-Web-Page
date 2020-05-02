@@ -6,6 +6,7 @@ import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
 import java.net.URL;
+import java.util.Base64;
 import java.util.List;
 
 import javax.imageio.ImageIO;
@@ -16,6 +17,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ObjectNode;
 import com.google.gson.Gson;
 
 import Model.Imagen;
@@ -45,13 +48,30 @@ public class ImagenController {
 		return imagenService.producto(p);
 	}
 	
-	/*
-	@GetMapping("imagen-producto-example")
-	public List<Imagen> ImagenesDeProductoMock()
-	{	
-		Producto p = productoService.getAll().get(0);
-		return p.getImagenes();
-	}*/
+	@PostMapping("imagen-save")
+	public boolean save(@RequestBody ObjectNode objectNode)
+	{
+		ObjectMapper mapper = new ObjectMapper();
+		Imagen i  = mapper.convertValue(objectNode.get("imagen"),Imagen.class);
+		
+		String str = objectNode.get("base64Str").asText();
+		byte[] backToBytes = Base64.getDecoder().decode(str);
+		i.setBytes(backToBytes);
+	 	return imagenService.save(i);
+	}
+	
+	@PostMapping("imagen-update")
+	public boolean update(@RequestBody Imagen i)
+	{
+		return imagenService.update(i);
+	}
+	
+	@PostMapping("imagen-delete")
+	public boolean delete(@RequestBody Imagen i)
+	{
+		return imagenService.delete(i);
+	}
+	
 	
 	@GetMapping("/imagen-mostrar/{id}")
 	public void imagenMostrar(@PathVariable int id,
@@ -131,46 +151,5 @@ public class ImagenController {
 		IOUtils.copy(new ByteArrayInputStream(ByteimageInByte), response.getOutputStream());
 	}
 	
-	/*
-	@GetMapping("/imagen-mostrar-url-example")
-	public void imagenMostrarUrlExample(HttpServletResponse response) throws IOException{
-		
-		response.setContentType(MediaType.IMAGE_JPEG_VALUE);
-		
-		byte arr[] = productoService.getAll().get(0).getImagenes().get(0).getBytes();
-		
-		InputStream is = new ByteArrayInputStream(arr);
-		
-		BufferedImage bi = null;
-		
-		int ch;
-		
-		String urlString = "";
-		
-		while(((ch = is.read()) != -1))
-		{
-			urlString += (char)ch;
-		}
-		
-		URL url = new URL(urlString);
-		
-		bi = ImageIO.read(url);
-		
-		ByteArrayOutputStream baos = new ByteArrayOutputStream();
-		
-		String format = "jpg";
-		
-		if(urlString.contains("png"))
-			format = "png";
-		
-		ImageIO.write(bi, format, baos);
-		
-		baos.flush();
-		
-		byte[]ByteimageInByte = baos.toByteArray();
-		
-		baos.close();
-			
-		IOUtils.copy(new ByteArrayInputStream(ByteimageInByte), response.getOutputStream());
-	}*/
+	
 }

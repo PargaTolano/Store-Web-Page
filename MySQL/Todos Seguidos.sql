@@ -81,7 +81,7 @@ DELIMITER //
 CREATE PROCEDURE ejemplo2.producto_all
 ()
 BEGIN
-SELECT P.Id, P.Nombre, P.Descripcion, P.Unidades, P.Precio, P.Descuento
+SELECT P.Id, P.Nombre, P.Descripcion, P.Unidades, P.Precio, P.Descuento, P.pdf_id
 FROM   ejemplo2.producto P;
 END //DELIMITER ;
 
@@ -89,7 +89,7 @@ DELIMITER //
 CREATE PROCEDURE ejemplo2.producto_by_id
 (IN id INTEGER)
 BEGIN
-SELECT P.Id, P.Nombre, P.Descripcion, P.Unidades, P.Precio, P.Descuento
+SELECT P.Id, P.Nombre, P.Descripcion, P.Unidades, P.Precio, P.Descuento, P.pdf_id
 FROM   ejemplo2.producto P
 WHERE p.id = id;
 END //DELIMITER ;
@@ -178,7 +178,6 @@ BEGIN
 SELECT c.Id ,c.usuario_id
 FROM   ejemplo2.carritodecompra C;
 END //DELIMITER ;
-
 /*
 call save_usuario ('jose','parga','parga.jose@outlook.com', 'PargaHumana','J0s3p4rg4',8114889772,'Paseo Verona 304', 32131213123213);
 
@@ -203,13 +202,42 @@ VALUES(1,1);
 
 call producto_all;
 
+#DELETE FROM Producto WHERE ID >1;
+
+call producto_all;
+
 call producto_by_id(1);
 
 call imagen_all;
 
+#DELETE FROM imagen WHERE id > 1;
+
 call video_all;
+
+call pdf_all;
 
 call imagen_by_id(1)
 
 call imagen_producto_by_id(1)
 */
+
+#########################
+#          PDF		    #
+#########################
+
+DELIMITER //
+CREATE PROCEDURE ejemplo2.PDF_all
+()
+BEGIN
+SELECT PDF.id, PDF.producto_id, PDF.contenido, PDF.nombre
+FROM   ejemplo2.PDF;
+END //DELIMITER ;
+
+DELIMITER //
+CREATE PROCEDURE ejemplo2.PDF_byId
+(IN ID INTEGER)
+BEGIN
+SELECT PDF.id, PDF.producto_id, PDF.contenido, PDF.nombre
+FROM   ejemplo2.PDF
+WHERE  PDF.ID = ID;
+END //DELIMITER ;

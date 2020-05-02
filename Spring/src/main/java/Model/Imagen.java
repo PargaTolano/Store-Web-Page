@@ -5,6 +5,7 @@ import javax.persistence.*;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 @Entity
 @Table(name="imagen")
@@ -14,6 +15,8 @@ public class Imagen {
 	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private int id;
 	
+	@JsonProperty("bytes")
+	@Column(columnDefinition="LONGBLOB")
 	private byte[] bytes;
 	
 	@JsonIgnoreProperties("imagenes")

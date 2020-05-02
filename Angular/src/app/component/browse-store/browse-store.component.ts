@@ -23,6 +23,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:0,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
   
   },
@@ -35,6 +36,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:10,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
 
   },
@@ -47,6 +49,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:0,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
   
   },
@@ -59,6 +62,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:10,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
 
   },{
@@ -70,6 +74,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:0,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
   
   },
@@ -82,6 +87,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:10,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
 
   },
@@ -94,6 +100,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:0,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
   
   },
@@ -106,6 +113,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:10,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
 
   },
@@ -118,6 +126,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:0,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
   
   },
@@ -130,6 +139,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:10,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
 
   },
@@ -142,6 +152,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:0,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
   
   },
@@ -154,6 +165,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:10,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
 
   },{
@@ -165,6 +177,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:0,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
   
   },
@@ -177,6 +190,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:10,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
 
   },
@@ -189,6 +203,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:0,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
   
   },
@@ -201,6 +216,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:10,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
 
   },{
@@ -212,6 +228,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:0,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
   
   },
@@ -224,6 +241,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:10,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
 
   },
@@ -236,6 +254,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:0,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
   
   },
@@ -248,6 +267,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:10,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
 
   },
@@ -260,6 +280,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:0,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
   
   },
@@ -272,6 +293,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:10,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
 
   },
@@ -284,6 +306,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:0,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
   
   },
@@ -296,6 +319,7 @@ export class BrowseStoreComponent implements OnInit {
     descuento:10,
     imagenes:[],
     videos:[],
+    pdf:null,
     productosComprados:[]
 
   }];
@@ -327,22 +351,18 @@ export class BrowseStoreComponent implements OnInit {
     'https://bukovero.com/wp-content/uploads/2016/07/Harry_Potter_and_the_Cursed_Child_Special_Rehearsal_Edition_Book_Cover.jpg'
   ];
 
-
-  pito():string{  return "http://localhost:8080/api/imagen-mostrar-url/1"; }
-
   constructor(
     private router:         Router,
     private productoService:ProductoService,
     private imagenService:  ImagenService) { }
 
   ngOnInit(): void {
-    this.productos= this.prodcutosMock;
-    /*
+    
     this.productoService.getAll().subscribe(data=>{
 
       this.productos = data;
 
-    });*/
+    },error=>console.log(error));
   }
 
   imageUrl(imagen:Imagen):string

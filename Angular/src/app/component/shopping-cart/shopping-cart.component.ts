@@ -28,12 +28,13 @@ export class ShoppingCartComponent implements OnInit {
 			{
 				id:0,
 				nombre:"Libro",
-				descripcion:"pito pito pito pito pito pito pito pito pito pito pito pito pito pito pito pito pito pito pito pito pito pito pito pito",
+				descripcion:"lo recomiendo",
 				unidades:10,
 				precio:10.0,
 				descuento: 50,
 				imagenes:null,
 				videos:null,
+				pdf:null,
 				productosComprados:null
 			}
 		},
@@ -46,12 +47,13 @@ export class ShoppingCartComponent implements OnInit {
 			{
 				id:1,
 				nombre:"Otro Libro",
-				descripcion:"ñonga ñonga ñonga ñonga ñonga ñonga ñonga ñonga",
+				descripcion:"Esta chido",
 				unidades:44,
 				precio:22.0,
 				descuento: 2,
 				imagenes:null,
 				videos:null,
+				pdf:null,
 				productosComprados:null
 			}
 		}
@@ -74,9 +76,6 @@ export class ShoppingCartComponent implements OnInit {
 	) { }
 
 	ngOnInit():void{
-
-		this.carrito.productosComprados = this.productosCompradosMock;
-
 
 	}
 

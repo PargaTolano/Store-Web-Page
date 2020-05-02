@@ -1,1 +1,72 @@
-<p>add-product works!</p>
+<div id="newProduct">
+    <h3> Dar de alta nuevo producto</h3>
+    <div class="center-x">
+        <div [hidden]="submitted" style="width: 400px;" class="center-x">
+            <form [formGroup]="saveForm" #saveid (ngSubmit)="SaveId(saveid)">
+
+                <div class="form-group">
+                    <label for="name">Nombre</label>
+                    <input type="text" class="form-control" formControlName="producto_nombre" data-toggle="tooltip" data-placement="right" title="Introduce el Nombre">
+                    <div class="alert alert-danger error" *ngIf="(ProductoNombre.touched) && (ProductoNombre.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="ProductoNombre.errors.required">Campo Requerido           </span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Descripcion</label>
+                    <input type="text" class="form-control" formControlName="producto_descripcion" data-toggle="tooltip" data-placement="right" title="Introduce Descripcion">
+                    <div class="alert alert-danger error" *ngIf="(ProductoDescripcion.touched) && (ProductoDescripcion.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="ProductoDescripcion.errors.required">Campo Requerido</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Unidades</label>
+                    <input type="text" class="form-control" formControlName="producto_unidades" data-toggle="tooltip" data-placement="right" title="Introduce unidades">
+                    <div class="alert alert-danger error" *ngIf="(ProductoUnidades.touched) && (ProductoUnidades.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="ProductoUnidades.errors.required">Campo Requerido</span>
+                        <span *ngIf="ProductoUnidades.errors.minlength">Campo muy corto</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Precio</label>
+                    <input type="text" class="form-control" formControlName="producto_precio" data-toggle="tooltip" data-placement="right" title="Introduce precio">
+                    <div class="alert alert-danger error" *ngIf="(ProductoPrecio.touched) && (ProductoPrecio.invalid)" style="margin-top: 5px;">
+                        <span *ngIf="ProductoPrecio.errors.required">Campo Requerido</span>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Archivo PDF</label>
+                    <input type="file" #filePDF (change)="onFileChangePDF($event)" accept="application/pdf" id="myfilePDF" name="myfilePDF" class="form-control" formControlName="producto_pdf" data-toggle="tooltip" data-placement="right" title="Selecciona la imagen">
+                    <div class="alert alert-danger error" *ngIf="(ProductoPDF.touched) && (ProductoPDF.invalid)" style="margin-top: 5px;">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="name">Imagen</label>
+                    <input type="file" #file (change)="onFileChangeImage($event)" accept="image/x-png,image/gif,image/jpeg" id="myfile" name="myfile" class="form-control" formControlName="producto_imagen" data-toggle="tooltip" data-placement="right" title="Selecciona la imagen">
+                    <div class="alert alert-danger error" *ngIf="(ProductoImagenes.touched) && (ProductoImagenes.invalid)" style="margin-top: 5px;">
+                    </div>
+
+                    <img [src]="imageSrc" *ngIf="imageSrc" style="margin-top:20px" width=400 height=400>
+                </div>
+
+
+
+                <button type="submit" class="btn btn-success">Submit</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-4"></div>
+        <div class="col-sm-4">
+            <div *ngIf="0">
+                <h4>Product Added SuccessFully!</h4>
+                <button (click)="addForm()" class='btn btn-primary'>Add More Products</button>
+            </div>
+        </div>
+        <div class="col-sm-4"></div>
+    </div>
+</div>

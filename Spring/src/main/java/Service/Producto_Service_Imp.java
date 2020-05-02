@@ -17,17 +17,17 @@ public class Producto_Service_Imp implements Producto_Service {
 	private ProductoDAO productodao;
 	
 	@Override
-	public boolean save(Producto p) {
+	public Producto save(Producto p) {
 		return productodao.save(p);
 	}
 
 	@Override
-	public boolean update(Producto p) {
+	public Producto update(Producto p) {
 		return productodao.save(p);
 	}
 
 	@Override
-	public boolean delete(Producto p) {
+	public Producto delete(Producto p) {
 		return productodao.delete(p);
 	}
 

@@ -1,16 +1,21 @@
 package DAO;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.ParameterMode;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.procedure.ProcedureCall;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import Model.Imagen;
 import Model.Producto;
+import Model.ProductoComprado;
+import Model.Video;
 
 @Repository
 @SuppressWarnings("unchecked")
@@ -20,49 +25,54 @@ public class ProductoDAO_Imp implements ProductoDAO {
 	private SessionFactory sessionFactory;
 	
 	@Override
-	public boolean save(Producto p) {
-		boolean status=false;
+	public Producto save(Producto p) {
 		try {
 			sessionFactory.getCurrentSession().save(p);
-			status=true;
+			return p;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return status;
+		return null;
 	}
 
 	@Override
-	public boolean update(Producto p) {
-		boolean status=false;
+	public Producto update(Producto p) {
 		try {
 			sessionFactory.getCurrentSession().update(p);
-			status=true;
+			return p;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return status;
+		return null;
 	}
 
 	@Override
-	public boolean delete(Producto p) {
-		boolean status=false;
+	public Producto delete(Producto p) {
 		try {
 			sessionFactory.getCurrentSession().update(p);
-			status=true;
+			return p;
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		return status;
+		return null;
 	}
 
 	@Override
 	public List<Producto> getAll() {
 		Session currentSession = sessionFactory.getCurrentSession();
+		
+		System.out.println(currentSession);
+		
 		ProcedureCall procedureCall= currentSession.createStoredProcedureCall("producto_all", Producto.class);
 		List<Producto> list=procedureCall.getResultList();
-		list.get(0).getImagenes().size();
-		list.get(0).getVideos().size();
-		list.get(0).getProductosComprados().size();
+		
+		for(Producto p : list)
+		{
+			Hibernate.initialize(p.getImagenes());
+			Hibernate.initialize(p.getVideos());
+			Hibernate.initialize(p.getProductosComprados());
+		}
+		
 		return list;
 	}
 

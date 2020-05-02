@@ -1,0 +1,91 @@
+<div id="ChangeProduct">
+    <h3> Dar de alta cambio de producto</h3>
+    <div class="center-x">
+        <div [hidden]="submitted" style="width: 400px;" class="center-x">
+            <form [formGroup]="saveForm" #saveid (ngSubmit)="SaveId(saveid)">
+                <div id="product-info-wrapper">
+                    <div class="margin-wrapper">
+                        <div id="slide" class="row">
+                            <ul>
+                                <li *ngFor="let mediaBox of mediaBoxes; let ind = index">
+                                    <img [src]="getImageUrl(ind)">
+                                </li>
+                            </ul>
+                            <div *ngIf="imgCount > 1">
+                                <ol id="paginacion">
+                                    <li class="dot" *ngFor="let mediaBox of mediaBoxes; let ind = index"><span class="fa fa-circle" (click)="circleClick(ind,$event)"></span></li>
+                                </ol>
+                                <div class="arrow" id="retroceder"><span class="fa fa-chevron-left"></span> </div>
+                                <div class="arrow" id="avanzar"> <span class="fa fa-chevron-right"></span> </div>
+                            </div>
+                        </div>
+                        <div class="producto-info-card">
+                            <div class="card-header bg-dark">
+                                <h1>{{producto.nombre}}</h1>
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Nuevo Nombre</label>
+                                <input type="text" class="form-control" formControlName="producto_nombre" data-toggle="tooltip" data-placement="right" title="Introduce el Nombre">
+                                <div class="alert alert-danger error" *ngIf="(ProductoNombre.touched) && (ProductoNombre.invalid)" style="margin-top: 5px;">
+                                    <span *ngIf="ProductoNombre.errors.required">Campo Requerido           </span>
+                                </div>
+                            </div>
+                            <div class="card-body bg-dark">
+                                {{producto.descripcion}}
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Nueva Descripcion</label>
+                                <input type="text" class="form-control" formControlName="producto_descripcion" data-toggle="tooltip" data-placement="right" title="Introduce Descripcion">
+                                <div class="alert alert-danger error" *ngIf="(ProductoDescripcion.touched) && (ProductoDescripcion.invalid)" style="margin-top: 5px;">
+                                    <span *ngIf="ProductoDescripcion.errors.required">Campo Requerido</span>
+                                </div>
+                            </div>
+                            <div class="card-body bg-dark">
+                                {{producto.unidades}}
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Unidades</label>
+                                <input type="text" class="form-control" formControlName="producto_unidades" data-toggle="tooltip" data-placement="right" title="Introduce unidades">
+                                <div class="alert alert-danger error" *ngIf="(ProductoUnidades.touched) && (ProductoUnidades.invalid)" style="margin-top: 5px;">
+                                    <span *ngIf="ProductoUnidades.errors.required">Campo Requerido</span>
+                                    <span *ngIf="ProductoUnidades.errors.minlength">Campo muy corto</span>
+                                </div>
+                            </div>
+                            <div class="card-body bg-dark">
+                                {{producto.precio}}
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Precio</label>
+                                <input type="text" class="form-control" formControlName="producto_precio" data-toggle="tooltip" data-placement="right" title="Introduce precio">
+                                <div class="alert alert-danger error" *ngIf="(ProductoPrecio.touched) && (ProductoPrecio.invalid)" style="margin-top: 5px;">
+                                    <span *ngIf="ProductoPrecio.errors.required">Campo Requerido</span>
+                                </div>
+                            </div>
+                            <div class="card-body bg-dark">
+                                {{producto.pdf.nombre}}
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Archivo PDF</label>
+                                <input type="file" #filePDF (change)="onFileChangePDF($event)" accept="application/pdf" id="myfilePDF" name="myfilePDF" class="form-control" formControlName="producto_pdf" data-toggle="tooltip" data-placement="right" title="Selecciona la imagen">
+                                <div class="alert alert-danger error" *ngIf="(ProductoPDF.touched) && (ProductoPDF.invalid)" style="margin-top: 5px;">
+                                </div>
+                            </div>
+                            <div class="card-body bg-dark">
+                                {{producto.imagenes}}
+                            </div>
+                            <div class="form-group">
+                                <label for="name">Imagen</label>
+                                <input type="file" #file (change)="onFileChangeImage($event)" accept="image/x-png,image/gif,image/jpeg" id="myfile" name="myfile" class="form-control" formControlName="producto_imagen" data-toggle="tooltip" data-placement="right" title="Selecciona la imagen">
+                                <div class="alert alert-danger error" *ngIf="(ProductoImagenes.touched) && (ProductoImagenes.invalid)" style="margin-top: 5px;">
+                                </div>
+
+                                <img [src]="imageSrc" *ngIf="imageSrc" style="margin-top:20px" width=400 height=400>
+                            </div>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

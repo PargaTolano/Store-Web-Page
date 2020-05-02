@@ -1,3 +1,4 @@
+import { PDFFile } from './pdffile';
 import { Video } from './video';
 import { Imagen } from './imagen';
 import { ProductoComprado } from './producto-comprado';
@@ -20,6 +21,8 @@ export class Producto {
 	imagenes:Imagen[];
 
 	videos:Video[];
+
+	pdf:PDFFile;
 	
 	productosComprados:ProductoComprado[];
 }

@@ -12,6 +12,22 @@ export class ProductoService {
 
   constructor(private http:HttpClient) { }
 
+
+  save(producto:Producto)
+  {
+    return this.http.post<Producto>(`${this.baseUrl}save`, producto);
+  }
+
+  update(producto:Producto)
+  {
+    return this.http.post<Producto>(`${this.baseUrl}update`, producto);
+  }
+
+  delete(producto:Producto)
+  {
+    return this.http.post<Producto>(`${this.baseUrl}delete`, producto);
+  }
+
   getById(id:number):Observable<Producto>
   {
     return this.http.get<Producto>(`${this.baseUrl}id/${id}`);

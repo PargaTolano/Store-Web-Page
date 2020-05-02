@@ -42,6 +42,11 @@ public class Producto {
 	@JsonManagedReference
 	@OneToMany
 	List<ProductoComprado> productosComprados;
+	
+	@JsonIgnoreProperties(value="producto", allowSetters=true)
+	@JsonManagedReference
+	@OneToOne
+	private PDFFile pdf;
 
 	public int getId() {
 		return id;

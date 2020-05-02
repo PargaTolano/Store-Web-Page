@@ -4,7 +4,7 @@ export class Imagen {
     
     id:number;
 	
-	bytes:Int8Array;
+	bytes:Int8Array | string;
 	
 	producto:Producto;
 }

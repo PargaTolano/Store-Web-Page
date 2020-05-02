@@ -1,3 +1,6 @@
+import { PdfService } from './service/pdf.service';
+import { ImagenService } from './service/imagen.service';
+import { ProductoService } from './service/producto.service';
 import { HttpClientModule } from '@angular/common/http';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -14,6 +17,8 @@ import { ProductPageComponent } from './component/product-page/product-page.comp
 import { AddProductComponent } from './component/add-product/add-product.component';
 import { BrowseStoreComponent } from './component/browse-store/browse-store.component';
 import { FooterComponent } from './component/footer/footer.component';
+import { CmsComponent } from './component/cms/cms.component';
+import { EditProductComponent } from './component/edit-product/edit-product.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +31,9 @@ import { FooterComponent } from './component/footer/footer.component';
     ProductPageComponent,
     AddProductComponent,
     BrowseStoreComponent,
-    FooterComponent
+    FooterComponent,
+    CmsComponent,
+    EditProductComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +42,9 @@ import { FooterComponent } from './component/footer/footer.component';
     ReactiveFormsModule,
     HttpClientModule
   ],
-  providers: [],
+  providers: [ProductoService,
+              ImagenService,
+              PdfService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

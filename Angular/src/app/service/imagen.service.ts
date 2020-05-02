@@ -1,23 +1,33 @@
+import { Imagen } from './../model/imagen';
 import { Producto } from './../model/producto';
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Imagen } from '../model/imagen';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class ImagenService {
 
   private baseUrl = `${window.location.protocol}//${window.location.hostname}:8080/api/imagen-`;
 
   constructor(private http:HttpClient) { }
 
+  save(imagen:Imagen, str:string){
+    imagen.bytes = null;
+    return this.http.post(`${this.baseUrl}save`, {"imagen":imagen,"base64Str":str});
+  }
+
+  update(imagen:Imagen){
+    return this.http.post(`${this.baseUrl}update`, imagen);
+  }
+
+  delete(imagen:Imagen){
+    return this.http.post(`${this.baseUrl}delete`, imagen);
+  }
+
   getByAllByProduct(producto:Producto):Observable<any>
   {
     return this.http.post(`${this.baseUrl}producto`, producto);
   }
-
 
   imagenUrl(imagen:Imagen):string
   {

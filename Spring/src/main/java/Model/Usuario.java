@@ -28,6 +28,7 @@ public class Usuario {
 	
 	private String direccion;
 	
+	@Column(columnDefinition="LONGBLOB")
 	private byte[] avatar;
 	
 	@JsonIgnoreProperties("usuario")

@@ -10,6 +10,7 @@ $selection-color:#990000;
 #container {
     background: $far;
     padding: 10px;
+    margin: 200px 0;
 }
 
 #container h4 {
@@ -30,6 +31,7 @@ ul.product-row {
 
 .center-x {
     text-align: center;
+    margin: 0px auto;
 }
 
 .search-box input[type="text"] {
@@ -45,8 +47,10 @@ ul.product-row {
     background: white;
     color: black;
     padding: 10px;
-    width: auto;
+    width: 500px;
     border-radius: 30px;
+    text-align: center;
+    margin: 0 auto;
 }
 
 .search-box i {
